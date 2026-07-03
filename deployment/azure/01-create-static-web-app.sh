@@ -6,10 +6,10 @@ set -euo pipefail
 
 APP_NAME="${APP_NAME:-trade-scale-waitlist}"
 RESOURCE_GROUP="${RESOURCE_GROUP:-${APP_NAME}-rg}"
-LOCATION="${LOCATION:-uksouth}"
+LOCATION="${LOCATION:-westeurope}"
 SKU="${SKU:-Free}"
 TAGS="${TAGS:-project=trade-scale-waitlist env=prod}"
-GITHUB_SOURCE="${GITHUB_SOURCE:-}"
+GITHUB_SOURCE="${GITHUB_SOURCE:-https://github.com/groveale/trade-scale-waitlist}"
 GITHUB_BRANCH="${GITHUB_BRANCH:-main}"
 
 usage() {
@@ -19,14 +19,14 @@ Usage:
   RESOURCE_GROUP=<resource-group-name> \
   LOCATION=<azure-region> \
   SKU=<Free|Standard|Dedicated> \
-  GITHUB_SOURCE=<https://github.com/groveale/repo> \
+  GITHUB_SOURCE=<https://github.com/org-or-user/repo> \
   GITHUB_BRANCH=<branch-name> \
   ./deployment/azure/01-create-static-web-app.sh
 
 Defaults:
   APP_NAME=trade-scale-waitlist
   RESOURCE_GROUP=<APP_NAME>-rg
-  LOCATION=uksouth
+  LOCATION=westeurope
   SKU=Free
 
 Notes:
