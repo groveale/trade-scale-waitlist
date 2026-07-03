@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trade Forge — Join the Waitlist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0D0D0D;--graphite:#1A1A1A;--g2:#222222;--g3:#2C2C2C;
+  --orange:#FF6B2C;--amber:#FFB347;--white:#FFFFFF;
+  --w60:rgba(255,255,255,0.6);--w30:rgba(255,255,255,0.3);
+  --w10:rgba(255,255,255,0.1);--w06:rgba(255,255,255,0.06);
+  --green:#25D366;--border:rgba(255,255,255,0.08);--borderb:rgba(255,255,255,0.14)
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Satoshi',-apple-system,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(13,13,13,0.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:100}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-text{font-size:18px;font-weight:700;color:var(--white);letter-spacing:-0.3px}
+.nav-badge{font-size:11px;font-weight:600;color:var(--orange);border:1px solid rgba(255,107,44,0.35);border-radius:20px;padding:4px 10px;letter-spacing:0.4px;text-transform:uppercase}
+.hero{padding:52px 24px 0;text-align:center}
+.hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--orange);margin-bottom:20px}
+.hero h1{font-size:clamp(38px,10vw,56px);font-weight:900;line-height:1.03;letter-spacing:-1.8px;color:var(--white);margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero-sub{font-size:16px;color:var(--w60);line-height:1.65;max-width:320px;margin:0 auto 36px;font-weight:400}
+.wa-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;margin:0 auto 52px;max-width:360px;width:100%}
+.wa-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:56px;background:var(--green);border:none;border-radius:14px;color:#fff;font-family:'Satoshi',sans-serif;font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;transition:background .2s,transform .1s;-webkit-tap-highlight-color:transparent;letter-spacing:-0.1px}
+.wa-btn:hover{background:#1ebe5d}
+.wa-btn:active{transform:scale(0.98)}
+.wa-btn svg{flex-shrink:0}
+.form-note{font-size:12px;color:rgba(255,255,255,0.3);text-align:center}
+.wa-pulse{width:8px;height:8px;background:var(--green);border-radius:50%;display:inline-block;margin-right:6px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(0.8)}}
+.online-indicator{font-size:12px;color:rgba(255,255,255,0.45);display:flex;align-items:center;justify-content:center}
+.mockup-section{padding:0 16px 64px;display:flex;justify-content:center}
+.phones-wrapper{position:relative;width:100%;max-width:360px;height:490px}
+.phone{position:absolute;width:198px;height:420px;background:var(--graphite);border-radius:32px;border:1.5px solid var(--borderb);overflow:hidden;display:flex;flex-direction:column}
+.phone-left{left:0;top:35px;z-index:1;transform:rotate(-4deg)}
+.phone-right{right:0;top:0;z-index:2;transform:rotate(3deg)}
+.phone-notch{height:26px;background:var(--g2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.phone-notch-pill{width:56px;height:5px;background:var(--g3);border-radius:3px}
+.phone-screen{flex:1;background:var(--g2);overflow:hidden;display:flex;flex-direction:column}
+.inbox-header{background:var(--graphite);padding:10px 14px 8px;border-bottom:1px solid var(--border);flex-shrink:0}
+.inbox-header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.inbox-title{font-size:13px;font-weight:700;color:var(--white)}
+.inbox-logo{display:flex;align-items:center;gap:4px}
+.inbox-logo span{font-size:9px;font-weight:600;color:var(--orange)}
+.inbox-search{background:var(--g3);border-radius:7px;height:22px;display:flex;align-items:center;padding:0 8px;gap:5px}
+.inbox-search span{font-size:9px;color:rgba(255,255,255,0.3)}
+.chat-list{flex:1;overflow:hidden;padding:2px 0}
+.chat-item{display:flex;align-items:center;gap:8px;padding:7px 14px;border-bottom:1px solid var(--border);opacity:0;transform:translateX(-10px);transition:opacity .45s ease,transform .45s ease}
+.chat-item.vis{opacity:1;transform:translateX(0)}
+.chat-avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;color:var(--white)}
+.av1{background:#2563EB}.av2{background:#7C3AED}.av3{background:#059669}.av4{background:#B45309}.av5{background:#DC2626}
+.chat-info{flex:1;min-width:0}
+.chat-name{font-size:10px;font-weight:600;color:var(--white);margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chat-preview{font-size:9px;color:var(--w60);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chat-meta{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0}
+.chat-time{font-size:8px;color:rgba(255,255,255,0.35)}
+.chat-unread{width:14px;height:14px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:#fff}
+.pipeline-header{background:var(--graphite);padding:10px 14px 8px;border-bottom:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+.pipeline-title{font-size:13px;font-weight:700;color:var(--white)}
+.pipeline-count{font-size:9px;color:var(--orange);font-weight:600}
+.pipeline-stages{flex:1;overflow:hidden;padding:8px 10px;display:flex;flex-direction:column;gap:8px}
+.stage-group{display:flex;flex-direction:column;gap:4px}
+.stage-label{font-size:8px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:rgba(255,255,255,0.35);padding:0 2px}
+.job-card{background:var(--g3);border-radius:8px;padding:7px 9px;border-left:2px solid transparent;opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease}
+.job-card.vis{opacity:1;transform:translateY(0)}
+.job-card.lead{border-left-color:#60A5FA}
+.job-card.quoted{border-left-color:var(--amber)}
+.job-card.booked{border-left-color:var(--orange)}
+.job-card.paid{border-left-color:var(--green)}
+.job-name{font-size:9px;font-weight:600;color:var(--white);margin-bottom:2px}
+.job-detail{font-size:8px;color:rgba(255,255,255,0.45)}
+.job-value{font-size:9px;font-weight:600;color:var(--orange);float:right;margin-top:-14px}
+.phones-arrow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;width:30px;height:30px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700}
+.proof-strip{padding:0 24px 56px;text-align:center}
+.waitlist-dots{display:flex;justify-content:center;margin-bottom:10px}
+.dot-avatar{width:28px;height:28px;border-radius:50%;border:2px solid var(--black);margin-left:-6px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;color:var(--white)}
+.dot-avatar:first-child{margin-left:0}
+.d1{background:#2563EB}.d2{background:#7C3AED}.d3{background:#059669}.d4{background:var(--orange)}
+.proof-count{font-size:13px;color:var(--w60)}
+.proof-count strong{color:var(--white);font-weight:700}
+.features{padding:0 24px 64px}
+.how{padding:0 24px 64px}
+.section-label{font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--orange);margin-bottom:28px;text-align:center}
+.feature-list{display:flex;flex-direction:column}
+.feature-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.feature-item:first-child{border-top:1px solid var(--border)}
+.feature-icon{width:40px;height:40px;background:var(--g2);border-radius:10px;border:1px solid var(--borderb);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.feature-title{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px;letter-spacing:-0.2px}
+.feature-desc{font-size:13px;color:var(--w60);line-height:1.55}
+.steps{display:flex;flex-direction:column}
+.step{display:flex;gap:16px;padding:20px 0}
+.step-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:32px}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--g2);border:1px solid var(--borderb);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--orange);flex-shrink:0}
+.step-line{width:1px;flex:1;background:var(--border);margin-top:6px}
+.step:last-child .step-line{display:none}
+.step-content{padding-top:4px}
+.step-title{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px}
+.step-desc{font-size:13px;color:var(--w60);line-height:1.55}
+.bottom-cta{padding:48px 24px 32px;text-align:center;border-top:1px solid var(--border)}
+.bottom-cta h2{font-size:26px;font-weight:900;letter-spacing:-0.8px;color:var(--white);margin-bottom:12px;line-height:1.15}
+.bottom-cta h2 em{font-style:normal;color:var(--orange)}
+.bottom-cta p{font-size:14px;color:var(--w60);margin-bottom:28px;line-height:1.55}
+footer{padding:24px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.footer-logo{display:flex;align-items:center;gap:8px}
+.footer-logo span{font-size:13px;font-weight:600;color:var(--w60)}
+.footer-legal{font-size:11px;color:rgba(255,255,255,0.25)}
+@media(prefers-reduced-motion:reduce){.chat-item,.job-card{opacity:1!important;transform:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo" aria-label="Trade Forge home">
+    <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <rect width="32" height="32" rx="8" fill="#1A1A1A"/>
+      <path d="M7 11h18M10 11l1.5 8h9L22 11" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M13.5 19l-1 4h7l-1-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="23" cy="9" r="2.5" fill="#FF6B2C"/>
+    </svg>
+    <span class="logo-text">Trade Forge</span>
+  </a>
+  <span class="nav-badge">Early Access</span>
+</nav>
+
+<section class="hero" aria-labelledby="h1">
+  <span class="hero-eyebrow">WhatsApp CRM for Tradespeople</span>
+  <h1 id="h1">Stop losing<br>jobs in your<br><em>WhatsApp.</em></h1>
+  <p class="hero-sub">Every message. Every lead. Every job — tracked in one place. Built for sole traders who don't have time for complicated software.</p>
+  <div class="wa-cta-wrap">
+    <a href="https://wa.me/447700000000?text=Hi%2C%20I%27d%20like%20early%20access%20to%20Trade%20Forge" class="wa-btn" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#fff" fill-opacity="0.15"/><path d="M16.2 5.8a7.5 7.5 0 00-12.3 8.2L3 19l5.1-1.3a7.5 7.5 0 008-12.9zM11 17a6 6 0 01-3.2-.9l-.2-.1-2.7.7.7-2.6-.2-.2A6 6 0 1111 17z" fill="#fff"/><path d="M8.6 7.9c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.1 1.6 2.5 3.9 3.4 1.9.8 2.3.6 2.7.6.4 0 1.3-.5 1.5-1s.2-1 .1-1.1c-.1-.1-.2-.2-.5-.3-.3-.1-1.3-.6-1.5-.7-.2-.1-.3-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.6-1.4-1.8-.2-.3 0-.4.1-.5l.4-.5c.1-.1.1-.3.2-.4 0-.2 0-.3-.1-.5z" fill="#fff"/></svg>
+      Message us on WhatsApp
+    </a>
+    <div class="online-indicator"><span class="wa-pulse"></span>Usually replies within the hour</div>
+    <p class="form-note">Tap to open WhatsApp. No app download needed.</p>
+  </div>
+</section>
+
+<div class="mockup-section" aria-label="App mockups showing WhatsApp inbox and job pipeline">
+  <div class="phones-wrapper">
+
+    <div class="phone phone-left">
+      <div class="phone-notch"><div class="phone-notch-pill"></div></div>
+      <div class="phone-screen">
+        <div class="inbox-header">
+          <div class="inbox-header-top">
+            <span class="inbox-title">Conversations</span>
+            <div class="inbox-logo">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><circle cx="5" cy="5" r="5" fill="#25D366"/><path d="M7.2 2.8a3.1 3.1 0 00-5.1 3.4L2 8l1.9-.5a3.1 3.1 0 003.3-4.7z" fill="#fff"/></svg>
+              <span>Trade Forge</span>
+            </div>
+          </div>
+          <div class="inbox-search">
+            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true"><circle cx="3.5" cy="3.5" r="2.5" stroke="rgba(255,255,255,0.3)" stroke-width="1.2"/><path d="M5.5 5.5L7 7" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span>Search messages...</span>
+          </div>
+        </div>
+        <div class="chat-list" id="chat-list">
+          <div class="chat-item" data-d="200"><div class="chat-avatar av1">DM</div><div class="chat-info"><div class="chat-name">Dave Mitchell</div><div class="chat-preview">Can you do the lawn Friday?</div></div><div class="chat-meta"><span class="chat-time">9:42</span><span class="chat-unread">2</span></div></div>
+          <div class="chat-item" data-d="400"><div class="chat-avatar av2">SR</div><div class="chat-info"><div class="chat-name">Sarah Reynolds</div><div class="chat-preview">Quote for the back garden?</div></div><div class="chat-meta"><span class="chat-time">9:18</span><span class="chat-unread">1</span></div></div>
+          <div class="chat-item" data-d="600"><div class="chat-avatar av3">JW</div><div class="chat-info"><div class="chat-name">James Wilson</div><div class="chat-preview">Brilliant, see you Tuesday</div></div><div class="chat-meta"><span class="chat-time">8:55</span></div></div>
+          <div class="chat-item" data-d="800"><div class="chat-avatar av4">PH</div><div class="chat-info"><div class="chat-name">Pat Hughes</div><div class="chat-preview">How much for a hedge trim?</div></div><div class="chat-meta"><span class="chat-time">8:31</span><span class="chat-unread">3</span></div></div>
+          <div class="chat-item" data-d="1000"><div class="chat-avatar av5">LC</div><div class="chat-info"><div class="chat-name">Linda Clarke</div><div class="chat-preview">Payment sent, thanks!</div></div><div class="chat-meta"><span class="chat-time">Yesterday</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phones-arrow" aria-hidden="true">&#8594;</div>
+
+    <div class="phone phone-right">
+      <div class="phone-notch"><div class="phone-notch-pill"></div></div>
+      <div class="phone-screen">
+        <div class="pipeline-header">
+          <span class="pipeline-title">Pipeline</span>
+          <span class="pipeline-count">5 jobs active</span>
+        </div>
+        <div class="pipeline-stages" id="pipeline-stages">
+          <div class="stage-group">
+            <div class="stage-label">New Lead</div>
+            <div class="job-card lead" data-d="300"><div class="job-name">Pat Hughes</div><div class="job-value">£80</div><div class="job-detail">Hedge trim · SE22</div></div>
+            <div class="job-card lead" data-d="500"><div class="job-name">Dave Mitchell</div><div class="job-value">£120</div><div class="job-detail">Lawn mow · SE15</div></div>
+          </div>
+          <div class="stage-group">
+            <div class="stage-label">Quoted</div>
+            <div class="job-card quoted" data-d="700"><div class="job-name">Sarah Reynolds</div><div class="job-value">£350</div><div class="job-detail">Garden clearance · SE21</div></div>
+          </div>
+          <div class="stage-group">
+            <div class="stage-label">Job Booked</div>
+            <div class="job-card booked" data-d="900"><div class="job-name">James Wilson</div><div class="job-value">£220</div><div class="job-detail">Tues 24 Jun · SE23</div></div>
+          </div>
+          <div class="stage-group">
+            <div class="stage-label">Paid</div>
+            <div class="job-card paid" data-d="1100"><div class="job-name">Linda Clarke</div><div class="job-value">£160</div><div class="job-detail">Paid via bank transfer</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="proof-strip">
+  <div class="waitlist-dots" aria-hidden="true">
+    <div class="dot-avatar d1">DM</div><div class="dot-avatar d2">SR</div><div class="dot-avatar d3">JW</div><div class="dot-avatar d4">+</div>
+  </div>
+  <p class="proof-count"><strong>47 tradespeople</strong> already on the waitlist</p>
+</div>
+
+<section class="features" aria-labelledby="fl">
+  <p class="section-label" id="fl">What you get</p>
+  <div class="feature-list">
+    <div class="feature-item">
+      <div class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17 10A7 7 0 113 10a7 7 0 0114 0z" stroke="#25D366" stroke-width="1.5"/><path d="M7.5 10l2 2 3-3" stroke="#25D366" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div><div class="feature-title">One inbox for all your leads</div><div class="feature-desc">Every WhatsApp message from every customer in one screen. No more scrolling to find who asked what.</div></div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="13" rx="2" stroke="#FF6B2C" stroke-width="1.5"/><path d="M6 4V2M14 4V2M2 8h16" stroke="#FF6B2C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div><div class="feature-title">See every job at a glance</div><div class="feature-desc">Lead to Quoted to Booked to Paid. Know exactly where every customer is — no spreadsheets, no sticky notes.</div></div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#FFB347" stroke-width="1.5"/><path d="M10 6v4l2.5 2.5" stroke="#FFB347" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div><div class="feature-title">Works with your existing WhatsApp</div><div class="feature-desc">Keep using WhatsApp Business on your phone. Trade Forge connects alongside — nothing changes for you or your customers.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="how" aria-labelledby="hl">
+  <p class="section-label" id="hl">How it works</p>
+  <div class="steps">
+    <div class="step"><div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Connect your WhatsApp</div><div class="step-desc">Takes about 2 minutes. You link the WhatsApp Business number you already use — no new number, no setup fee.</div></div></div>
+    <div class="step"><div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Messages start flowing in</div><div class="step-desc">Every new WhatsApp enquiry appears in your Trade Forge inbox. Reply from your phone as normal.</div></div></div>
+    <div class="step"><div class="step-left"><div class="step-num">3</div></div><div class="step-content"><div class="step-title">Move jobs through the pipeline</div><div class="step-desc">One tap to move a lead to Quoted, Booked, or Paid. Your whole business, organised in seconds.</div></div></div>
+  </div>
+</section>
+
+<section class="bottom-cta" aria-labelledby="h2">
+  <h2 id="h2">Ready to stop<br>losing <em>jobs?</em></h2>
+  <p>Join the waitlist. First access goes to tradespeople who sign up early.</p>
+  <div class="wa-cta-wrap">
+    <a href="https://wa.me/447700000000?text=Hi%2C%20I%27d%20like%20early%20access%20to%20Trade%20Forge" class="wa-btn" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#fff" fill-opacity="0.15"/><path d="M16.2 5.8a7.5 7.5 0 00-12.3 8.2L3 19l5.1-1.3a7.5 7.5 0 008-12.9zM11 17a6 6 0 01-3.2-.9l-.2-.1-2.7.7.7-2.6-.2-.2A6 6 0 1111 17z" fill="#fff"/><path d="M8.6 7.9c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.1 1.6 2.5 3.9 3.4 1.9.8 2.3.6 2.7.6.4 0 1.3-.5 1.5-1s.2-1 .1-1.1c-.1-.1-.2-.2-.5-.3-.3-.1-1.3-.6-1.5-.7-.2-.1-.3-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.6-1.4-1.8-.2-.3 0-.4.1-.5l.4-.5c.1-.1.1-.3.2-.4 0-.2 0-.3-.1-.5z" fill="#fff"/></svg>
+      Message us on WhatsApp
+    </a>
+    <div class="online-indicator"><span class="wa-pulse"></span>Usually replies within the hour</div>
+    <p class="form-note">For sole traders and small trade businesses in the UK.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#1A1A1A"/><path d="M7 11h18M10 11l1.5 8h9L22 11" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 19l-1 4h7l-1-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23" cy="9" r="2.5" fill="#FF6B2C"/></svg>
+    <span>Trade Forge</span>
+  </div>
+  <span class="footer-legal">© 2026 Trade Forge</span>
+</footer>
+
+<script>
+function animate(){
+  document.querySelectorAll('#chat-list .chat-item').forEach(el=>{
+    setTimeout(()=>el.classList.add('vis'),+el.dataset.d||0);
+  });
+  document.querySelectorAll('#pipeline-stages .job-card').forEach(el=>{
+    setTimeout(()=>el.classList.add('vis'),+el.dataset.d||0);
+  });
+}
+const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){animate();io.disconnect();}},{threshold:0.15});
+io.observe(document.querySelector('.mockup-section'));
+
+
+</script>
+</body>
+</html>
