@@ -1,0 +1,85 @@
+---
+import '../styles/waitlist.css';
+import { siteConfig } from '../config/site';
+import WhatsappCta from './WhatsappCta.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  h1: string;
+  intro: string;
+  bullets: string[];
+}
+
+const { title, description, canonicalPath, h1, intro, bullets } = Astro.props;
+const { siteUrl, brandName, whatsappNumber, whatsappMessage } = siteConfig;
+const canonicalUrl = `${siteUrl}${canonicalPath}`;
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+  </head>
+  <body>
+    <nav>
+      <a href="/" class="logo" aria-label="Trade Forge home">
+        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#1A1A1A" />
+          <path d="M7 11h18M10 11l1.5 8h9L22 11" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M13.5 19l-1 4h7l-1-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="23" cy="9" r="2.5" fill="#FF6B2C" />
+        </svg>
+        <span class="logo-text">{brandName}</span>
+      </a>
+      <span class="nav-badge">Early Access</span>
+    </nav>
+
+    <section class="hero" aria-labelledby="trade-title">
+      <span class="hero-eyebrow">WhatsApp CRM for UK trades</span>
+      <h1 id="trade-title">{h1}</h1>
+      <p class="hero-sub">{intro}</p>
+      <WhatsappCta href={whatsappUrl} buttonText="Join the waitlist on WhatsApp" noteText="First 100 signups get their first 3 months free, then £29.99/month." />
+    </section>
+
+    <section class="features" aria-labelledby="benefits-title">
+      <h2 class="section-label" id="benefits-title">Why Trade Forge helps</h2>
+      <div class="feature-list">
+        {bullets.map((item) => (
+          <div class="feature-item">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17 10A7 7 0 113 10a7 7 0 0114 0z" stroke="#FFB347" stroke-width="1.5" /><path d="M7.5 10l2 2 3-3" stroke="#FFB347" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </div>
+            <div><div class="feature-desc">{item}</div></div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="faq" aria-labelledby="faq-label">
+      <h2 class="section-label" id="faq-label">Quick answers</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Do I need a new number?</summary>
+          <p>No. You can keep using your current WhatsApp Business number.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is my data safe?</summary>
+          <p>Yes. We are UK-based, GDPR-aware, and we never sell your data.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="bottom-cta" aria-labelledby="return-title">
+      <h2 id="return-title">Ready to get more jobs?</h2>
+      <p>Join the waitlist and get first access.</p>
+      <WhatsappCta href={whatsappUrl} buttonText="Message us on WhatsApp" noteText="Built for UK sole traders and small teams." />
+    </section>
+  </body>
+</html>

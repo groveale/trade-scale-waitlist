@@ -1,11 +1,11 @@
 export const siteConfig = {
   brandName: 'Trade Forge',
-  siteUrl: 'https://waitlist.tradeforge.uk',
+  siteUrl: 'https://tradeforge.uk',
   whatsappNumber: '447594408283',
   whatsappMessage: "Hi, I'd like to join the Trade Forge waitlist. Can you please provide me with more information?",
   seo: {
-    title: 'Trade Forge - Join the Waitlist',
+    title: 'WhatsApp CRM for UK Tradespeople | Trade Forge',
     description:
-      'Join the Trade Forge waitlist. Stop losing jobs in WhatsApp with a simple CRM for sole traders and small trade businesses.'
+      'Trade Forge helps UK tradespeople turn WhatsApp leads into booked and paid jobs without spreadsheets. Join the waitlist today.'
   }
 } as const;

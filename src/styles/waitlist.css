@@ -16,15 +16,15 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 2
 .hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--orange);margin-bottom:20px}
 .hero h1{font-size:clamp(38px,10vw,56px);font-weight:900;line-height:1.03;letter-spacing:-1.8px;color:var(--white);margin-bottom:20px}
 .hero h1 em{font-style:normal;color:var(--orange)}
-.hero-sub{font-size:16px;color:var(--w60);line-height:1.65;max-width:320px;margin:0 auto 36px;font-weight:400}
+.hero-sub{font-size:16px;color:var(--w60);line-height:1.65;max-width:420px;margin:0 auto 36px;font-weight:400}
 .wa-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;margin:0 auto 52px;max-width:360px;width:100%}
-.wa-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:56px;background:var(--green);border:none;border-radius:14px;color:#fff;font-family:'Satoshi',sans-serif;font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;transition:background .2s,transform .1s;-webkit-tap-highlight-color:transparent;letter-spacing:-0.1px}
-.wa-btn:hover{background:#1ebe5d}
+.wa-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:56px;background:linear-gradient(135deg,var(--orange),var(--amber));border:none;border-radius:14px;color:#fff;font-family:'Satoshi',sans-serif;font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;transition:filter .2s,transform .1s;-webkit-tap-highlight-color:transparent;letter-spacing:-0.1px}
+.wa-btn:hover{filter:brightness(1.05)}
 .wa-btn:active{transform:scale(0.98)}
 .wa-btn:focus-visible{outline:2px solid var(--orange);outline-offset:2px;box-shadow:0 0 0 4px rgba(255,107,44,0.2)}
 .wa-btn svg{flex-shrink:0}
 .form-note{font-size:12px;color:rgba(255,255,255,0.3);text-align:center}
-.wa-pulse{width:8px;height:8px;background:var(--green);border-radius:50%;display:inline-block;margin-right:6px;animation:pulse 2s infinite}
+.wa-pulse{width:8px;height:8px;background:var(--amber);border-radius:50%;display:inline-block;margin-right:6px;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(0.8)}}
 .online-indicator{font-size:12px;color:rgba(255,255,255,0.45);display:flex;align-items:center;justify-content:center}
 .mockup-section{padding:0 16px 64px;display:flex;justify-content:center}
@@ -57,10 +57,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 2
 .pipeline-title{font-size:13px;font-weight:700;color:var(--white)}
 .pipeline-count{font-size:9px;color:var(--orange);font-weight:600}
 .pipeline-stages{flex:1;overflow:hidden;padding:8px 10px;display:flex;flex-direction:column;gap:8px}
-.stage-group{display:flex;flex-direction:column;gap:4px}
+.stage-group{display:flex;flex-direction:column;gap:4px;transition:transform .35s ease,filter .35s ease}
 .stage-label{font-size:8px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:rgba(255,255,255,0.45);padding:0 2px}
 .job-card{background:var(--g3);border-radius:8px;padding:7px 9px;border-left:2px solid transparent;opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease}
 .job-card.vis{opacity:1;transform:translateY(0)}
+.stage-group.active{transform:translateX(4px);filter:brightness(1.12)}
 .job-card.lead{border-left-color:#60A5FA}
 .job-card.quoted{border-left-color:var(--amber)}
 .job-card.booked{border-left-color:var(--orange)}
@@ -76,8 +77,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 2
 .d1{background:#2563EB}.d2{background:#7C3AED}.d3{background:#059669}.d4{background:var(--orange)}
 .proof-count{font-size:13px;color:var(--w60)}
 .proof-count strong{color:var(--white);font-weight:700}
+.proof-incentive{font-size:12px;color:var(--amber);margin-top:6px}
+.trust-line{font-size:12px;color:var(--w60);margin-top:8px}
 .features{padding:0 24px 64px}
 .how{padding:0 24px 64px}
+.faq{padding:0 24px 64px}
 .section-label{font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--orange);margin-bottom:28px;text-align:center}
 .feature-list{display:flex;flex-direction:column}
 .feature-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--border);align-items:flex-start}
@@ -94,16 +98,28 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 2
 .step-content{padding-top:4px}
 .step-title{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px}
 .step-desc{font-size:13px;color:var(--w60);line-height:1.55}
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{border:1px solid var(--border);border-radius:12px;background:var(--g2);padding:14px 16px}
+.faq-item summary{cursor:pointer;font-size:14px;font-weight:700;list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item p{margin-top:8px;color:var(--w60);font-size:13px;line-height:1.55}
 .bottom-cta{padding:48px 24px 32px;text-align:center;border-top:1px solid var(--border)}
 .bottom-cta h2{font-size:26px;font-weight:900;letter-spacing:-0.8px;color:var(--white);margin-bottom:12px;line-height:1.15}
 .bottom-cta h2 em{font-style:normal;color:var(--orange)}
 .bottom-cta p{font-size:14px;color:var(--w60);margin-bottom:28px;line-height:1.55}
+.mobile-sticky-cta{position:fixed;right:16px;bottom:16px;z-index:120;background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff;text-decoration:none;border-radius:999px;padding:12px 14px;font-size:14px;font-weight:700;display:none;align-items:center;gap:8px;box-shadow:0 10px 24px rgba(0,0,0,0.4);transform:translateY(12px);opacity:0;transition:opacity .25s ease,transform .25s ease}
+.mobile-sticky-cta.visible{display:flex;opacity:1;transform:translateY(0)}
 footer{padding:24px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .footer-logo{display:flex;align-items:center;gap:8px}
 .footer-logo span{font-size:13px;font-weight:600;color:var(--w60)}
 .footer-legal{font-size:11px;color:rgba(255,255,255,0.25)}
+@media(min-width:769px){
+  .mobile-sticky-cta{display:none!important}
+}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .chat-item,.job-card{opacity:1!important;transform:none!important;transition:none!important}
+  .stage-group{transition:none!important}
   .wa-pulse{animation:none}
+  .mobile-sticky-cta{transition:none}
 }

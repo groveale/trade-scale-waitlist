@@ -6,7 +6,7 @@ Static waitlist/holding site for Trade Forge, deployed with GitHub Pages.
 
 - Astro (static output)
 - GitHub Actions for CI deploy
-- GitHub Pages with custom domain: waitlist.tradeforge.uk
+- GitHub Pages with custom domain: tradeforge.uk
 
 ## Project Layout
 
@@ -22,7 +22,7 @@ Static waitlist/holding site for Trade Forge, deployed with GitHub Pages.
 
 Requirements:
 
-- Node.js 20+
+- Node.js 20.19.5+
 - npm 10+
 
 Install dependencies:
@@ -68,7 +68,7 @@ Update waitlist settings in `src/config/site.ts`:
 
 ## Deployment (GitHub Pages)
 
-Deploys are automated from `main` using `.github/workflows/deploy-pages.yml`.
+Deploys are triggered manually via `.github/workflows/deploy-pages.yml` (`workflow_dispatch`).
 
 This repo should be a **project site** (not your user-site blog repo). Your existing blog at `<your-github-username>.github.io` can stay as-is.
 
@@ -76,18 +76,18 @@ GitHub repo settings:
 
 1. Go to Settings > Pages.
 2. Set Source to GitHub Actions.
-3. Set custom domain to `waitlist.tradeforge.uk`.
+3. Set custom domain to `tradeforge.uk`.
 4. Enable Enforce HTTPS after DNS propagation.
 
 DNS (at your registrar):
 
-- Type: CNAME
-- Host: `waitlist`
-- Target: `<your-github-username>.github.io`
+- Type: A or ALIAS/ANAME (root/apex domain setup for `tradeforge.uk` with your DNS provider)
+- Host: `@`
+- Target: GitHub Pages apex records (or your provider's ALIAS target for GitHub Pages)
 
 Why this still works with your blog:
 
-- GitHub routes by hostname, and `waitlist.tradeforge.uk` is mapped by this repo's `public/CNAME` file.
+- GitHub routes by hostname, and `tradeforge.uk` is mapped by this repo's `public/CNAME` file.
 - Your blog remains on its own hostname/repository.
 
 If you ever deploy this without a custom domain (plain project URL), use:

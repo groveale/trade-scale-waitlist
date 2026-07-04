@@ -9,6 +9,7 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(w
 const pageTitle = seo.title;
 const pageDescription = seo.description;
 const canonicalUrl = `${siteUrl}/`;
+const ogImageUrl = `${siteUrl}/og-image.svg`;
 ---
 
 <!doctype html>
@@ -26,10 +27,14 @@ const canonicalUrl = `${siteUrl}/`;
     <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content={brandName} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImageUrl} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -37,12 +42,21 @@ const canonicalUrl = `${siteUrl}/`;
 
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'SoftwareApplication',
-      name: brandName,
-      applicationCategory: 'BusinessApplication',
-      operatingSystem: 'Web',
-      description: pageDescription,
-      url: canonicalUrl
+      '@graph': [
+        {
+          '@type': 'Organization',
+          name: brandName,
+          url: canonicalUrl
+        },
+        {
+          '@type': 'SoftwareApplication',
+          name: brandName,
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Web',
+          description: pageDescription,
+          url: canonicalUrl
+        }
+      ]
     })} />
   </head>
   <body>
@@ -62,7 +76,7 @@ const canonicalUrl = `${siteUrl}/`;
     <section class="hero" aria-labelledby="hero-title">
       <span class="hero-eyebrow">WhatsApp CRM for Tradespeople</span>
       <h1 id="hero-title">Stop losing<br />jobs in your<br /><em>WhatsApp.</em></h1>
-      <p class="hero-sub">Every message. Every lead. Every job - tracked in one place. Built for sole traders who do not have time for complicated software.</p>
+      <p class="hero-sub">Every message. Every lead. Every job - tracked in one place. Built for gardeners, cleaners, plumbers and other sole traders who do not have time for complicated software.</p>
       <WhatsappCta href={whatsappUrl} buttonText="Message us on WhatsApp" noteText="Tap to open WhatsApp. No app download needed." />
     </section>
 
@@ -132,13 +146,15 @@ const canonicalUrl = `${siteUrl}/`;
         <div class="dot-avatar d1">DM</div><div class="dot-avatar d2">SR</div><div class="dot-avatar d3">JW</div><div class="dot-avatar d4">+</div>
       </div>
       <p class="proof-count"><strong>47 tradespeople</strong> already on the waitlist</p>
+      <p class="proof-incentive">First 100 signups get their first 3 months free. Then £29.99/month.</p>
+      <p class="trust-line">UK-based. GDPR-aware handling. We never sell your data.</p>
     </div>
 
     <section class="features" aria-labelledby="features-label">
-      <p class="section-label" id="features-label">What you get</p>
+      <h2 class="section-label" id="features-label">What you get</h2>
       <div class="feature-list">
         <div class="feature-item">
-          <div class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17 10A7 7 0 113 10a7 7 0 0114 0z" stroke="#25D366" stroke-width="1.5" /><path d="M7.5 10l2 2 3-3" stroke="#25D366" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
+          <div class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17 10A7 7 0 113 10a7 7 0 0114 0z" stroke="#FFB347" stroke-width="1.5" /><path d="M7.5 10l2 2 3-3" stroke="#FFB347" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
           <div><div class="feature-title">One inbox for all your leads</div><div class="feature-desc">Every WhatsApp message from every customer in one screen. No more scrolling to find who asked what.</div></div>
         </div>
         <div class="feature-item">
@@ -153,7 +169,7 @@ const canonicalUrl = `${siteUrl}/`;
     </section>
 
     <section class="how" aria-labelledby="how-label">
-      <p class="section-label" id="how-label">How it works</p>
+      <h2 class="section-label" id="how-label">How it works</h2>
       <div class="steps">
         <div class="step"><div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Connect your WhatsApp</div><div class="step-desc">Takes about 2 minutes. You link the WhatsApp Business number you already use - no new number, no setup fee.</div></div></div>
         <div class="step"><div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Messages start flowing in</div><div class="step-desc">Every new WhatsApp enquiry appears in your Trade Forge inbox. Reply from your phone as normal.</div></div></div>
@@ -161,11 +177,41 @@ const canonicalUrl = `${siteUrl}/`;
       </div>
     </section>
 
+    <section class="faq" aria-labelledby="faq-label">
+      <h2 class="section-label" id="faq-label">Frequently asked questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Does this cost anything?</summary>
+          <p>Joining the waitlist is free. The first 100 signups get their first 3 months free, then it is £29.99/month.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need a new phone number?</summary>
+          <p>No. Trade Forge works with your existing WhatsApp Business number, so you keep the number your customers already use.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is my customer data safe?</summary>
+          <p>Yes. We are UK-based, GDPR-aware, and we never sell your data.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What if I'm not on WhatsApp Business yet?</summary>
+          <p>That is fine. We will help you get set up during onboarding so you can start using Trade Forge properly from day one.</p>
+        </details>
+      </div>
+    </section>
+
     <section class="bottom-cta" aria-labelledby="bottom-cta-title">
       <h2 id="bottom-cta-title">Ready to stop<br />losing <em>jobs?</em></h2>
-      <p>Join the waitlist. First access goes to tradespeople who sign up early.</p>
+      <p>Join the waitlist. First 100 signups get their first 3 months free, then £29.99/month.</p>
       <WhatsappCta href={whatsappUrl} buttonText="Join the Waitlist on WhatsApp" noteText="For sole traders and small trade businesses in the UK." />
     </section>
+
+    <a href={whatsappUrl} class="mobile-sticky-cta" target="_blank" rel="noopener noreferrer" aria-label="Join the waitlist on WhatsApp">
+      <svg width="20" height="20" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="11" fill="#fff" fill-opacity="0.2" />
+        <path d="M11 5.1a5.9 5.9 0 00-5 9.1l-.7 2.6 2.7-.7A5.9 5.9 0 1011 5.1zm0 10.6c-.9 0-1.7-.2-2.5-.7l-.2-.1-1.6.4.4-1.6-.1-.2A4.6 4.6 0 1111 15.7zm2.5-3.4c-.1-.1-.8-.4-1-.4-.1-.1-.2-.1-.3.1l-.4.5c-.1.1-.2.1-.3.1-.5-.2-1.5-.9-2-1.8-.1-.1 0-.2.1-.3l.3-.4c.1-.1.1-.2.1-.3 0-.1-.3-.8-.4-1-.1-.2-.2-.2-.3-.2h-.2c-.1 0-.3 0-.4.2-.1.2-.4.5-.4 1.1 0 .6.4 1.2.5 1.3.1.1.9 1.5 2.3 2.1 1.3.5 1.3.3 1.6.3.3 0 .8-.3.9-.6.1-.3.1-.6 0-.6z" fill="#fff" />
+      </svg>
+      WhatsApp
+    </a>
 
     <footer>
       <div class="footer-logo">
