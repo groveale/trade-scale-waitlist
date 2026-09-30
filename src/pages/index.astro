@@ -1,13 +1,9 @@
 ---
-import '../styles/waitlist.css';
+import '../styles/landing-v2.css';
 import { siteConfig } from '../config/site';
-import WhatsappCta from '../components/WhatsappCta.astro';
 
 const { whatsappNumber, whatsappMessage, seo, siteUrl, brandName } = siteConfig;
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-
-const pageTitle = seo.title;
-const pageDescription = seo.description;
 const canonicalUrl = `${siteUrl}/`;
 const ogImageUrl = `${siteUrl}/og-image.svg`;
 ---
@@ -16,15 +12,14 @@ const ogImageUrl = `${siteUrl}/og-image.svg`;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{pageTitle}</title>
-
-    <meta name="description" content={pageDescription} />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description} />
     <link rel="canonical" href={canonicalUrl} />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={pageDescription} />
+    <meta property="og:title" content={seo.title} />
+    <meta property="og:description" content={seo.description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content={brandName} />
     <meta property="og:image" content={ogImageUrl} />
@@ -32,13 +27,13 @@ const ogImageUrl = `${siteUrl}/og-image.svg`;
     <meta property="og:image:height" content="630" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
     <meta name="twitter:image" content={ogImageUrl} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
@@ -53,174 +48,119 @@ const ogImageUrl = `${siteUrl}/og-image.svg`;
           name: brandName,
           applicationCategory: 'BusinessApplication',
           operatingSystem: 'Web',
-          description: pageDescription,
-          url: canonicalUrl
+          description: seo.description,
+          url: canonicalUrl,
+          offers: {
+            '@type': 'Offer',
+            price: '29.99',
+            priceCurrency: 'GBP'
+          }
         }
       ]
     })} />
   </head>
   <body>
-    <nav>
-      <a href="/" class="logo" aria-label="Trade Forge home">
-        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <rect width="32" height="32" rx="8" fill="#1A1A1A" />
-          <path d="M7 11h18M10 11l1.5 8h9L22 11" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-          <path d="M13.5 19l-1 4h7l-1-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-          <circle cx="23" cy="9" r="2.5" fill="#FF6B2C" />
-        </svg>
-        <span class="logo-text">{brandName}</span>
-      </a>
-      <span class="nav-badge">Early Access</span>
-    </nav>
-
-    <section class="hero" aria-labelledby="hero-title">
-      <span class="hero-eyebrow">WhatsApp CRM for Tradespeople</span>
-      <h1 id="hero-title">Stop losing<br />jobs in your<br /><em>WhatsApp.</em></h1>
-      <p class="hero-sub">Every message. Every lead. Every job - tracked in one place. Built for gardeners, cleaners, plumbers and other sole traders who do not have time for complicated software.</p>
-      <WhatsappCta href={whatsappUrl} buttonText="Message us on WhatsApp" noteText="Tap to open WhatsApp. No app download needed." />
-    </section>
-
-    <section class="mockup-section" aria-label="App mockups showing WhatsApp inbox and job pipeline">
-      <div class="phones-wrapper">
-        <div class="phone phone-left">
-          <div class="phone-notch"><div class="phone-notch-pill"></div></div>
-          <div class="phone-screen">
-            <div class="inbox-header">
-              <div class="inbox-header-top">
-                <span class="inbox-title">Conversations</span>
-                <div class="inbox-logo">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><circle cx="5" cy="5" r="5" fill="#25D366" /><path d="M7.2 2.8a3.1 3.1 0 00-5.1 3.4L2 8l1.9-.5a3.1 3.1 0 003.3-4.7z" fill="#fff" /></svg>
-                  <span>Trade Forge</span>
-                </div>
-              </div>
-              <div class="inbox-search">
-                <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true"><circle cx="3.5" cy="3.5" r="2.5" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" /><path d="M5.5 5.5L7 7" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" stroke-linecap="round" /></svg>
-                <span>Search messages...</span>
-              </div>
-            </div>
-            <div class="chat-list" id="chat-list">
-              <div class="chat-item" data-d="200"><div class="chat-avatar av1">DM</div><div class="chat-info"><div class="chat-name">Dave Mitchell</div><div class="chat-preview">Can you do the lawn Friday?</div></div><div class="chat-meta"><span class="chat-time">9:42</span><span class="chat-unread">2</span></div></div>
-              <div class="chat-item" data-d="400"><div class="chat-avatar av2">SR</div><div class="chat-info"><div class="chat-name">Sarah Reynolds</div><div class="chat-preview">Quote for the back garden?</div></div><div class="chat-meta"><span class="chat-time">9:18</span><span class="chat-unread">1</span></div></div>
-              <div class="chat-item" data-d="600"><div class="chat-avatar av3">JW</div><div class="chat-info"><div class="chat-name">James Wilson</div><div class="chat-preview">Brilliant, see you Tuesday</div></div><div class="chat-meta"><span class="chat-time">8:55</span></div></div>
-              <div class="chat-item" data-d="800"><div class="chat-avatar av4">PH</div><div class="chat-info"><div class="chat-name">Pat Hughes</div><div class="chat-preview">How much for a hedge trim?</div></div><div class="chat-meta"><span class="chat-time">8:31</span><span class="chat-unread">3</span></div></div>
-              <div class="chat-item" data-d="1000"><div class="chat-avatar av5">LC</div><div class="chat-info"><div class="chat-name">Linda Clarke</div><div class="chat-preview">Payment sent, thanks!</div></div><div class="chat-meta"><span class="chat-time">Yesterday</span></div></div>
-            </div>
-          </div>
+    <main class="wrap">
+      <header class="hero">
+        <p class="eyebrow">Trade Forge <span aria-hidden="true">·</span> tradeforge.uk</p>
+        <h1>WhatsApp is already<br />your <span>job book.</span><br />Let's make it tax-ready.</h1>
+        <p class="hero-sub">
+          Customers keep messaging the way they always have. You get bookings, a live view of every job,
+          and clean records ready for your accountant and HMRC.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+            Join the waitlist on WhatsApp
+          </a>
+          <a class="btn btn-ghost" href="#pillars">See how it works</a>
         </div>
+        <p class="hero-note">First 100 sign-ups get 3 months free <span aria-hidden="true">·</span> £29.99/month after</p>
+      </header>
 
-        <div class="phones-arrow" aria-hidden="true">&rarr;</div>
-
-        <div class="phone phone-right">
-          <div class="phone-notch"><div class="phone-notch-pill"></div></div>
-          <div class="phone-screen">
-            <div class="pipeline-header">
-              <span class="pipeline-title">Pipeline</span>
-              <span class="pipeline-count">5 jobs active</span>
-            </div>
-            <div class="pipeline-stages" id="pipeline-stages">
-              <div class="stage-group">
-                <div class="stage-label">New Lead</div>
-                <div class="job-card lead" data-d="300"><div class="job-name">Pat Hughes</div><div class="job-value">GBP 80</div><div class="job-detail">Hedge trim - SE22</div></div>
-                <div class="job-card lead" data-d="500"><div class="job-name">Dave Mitchell</div><div class="job-value">GBP 120</div><div class="job-detail">Lawn mow - SE15</div></div>
-              </div>
-              <div class="stage-group">
-                <div class="stage-label">Quoted</div>
-                <div class="job-card quoted" data-d="700"><div class="job-name">Sarah Reynolds</div><div class="job-value">GBP 350</div><div class="job-detail">Garden clearance - SE21</div></div>
-              </div>
-              <div class="stage-group">
-                <div class="stage-label">Job Booked</div>
-                <div class="job-card booked" data-d="900"><div class="job-name">James Wilson</div><div class="job-value">GBP 220</div><div class="job-detail">Tues 24 Jun - SE23</div></div>
-              </div>
-              <div class="stage-group">
-                <div class="stage-label">Paid</div>
-                <div class="job-card paid" data-d="1100"><div class="job-name">Linda Clarke</div><div class="job-value">GBP 160</div><div class="job-detail">Paid via bank transfer</div></div>
-              </div>
-            </div>
-          </div>
+      <section class="costs" aria-labelledby="costs-title">
+        <div class="section-heading">
+          <h2 id="costs-title">What it actually costs you</h2>
+          <p>Not abstract market size. The money that slips away every week.</p>
         </div>
-      </div>
-    </section>
-
-    <div class="proof-strip">
-      <div class="waitlist-dots" aria-hidden="true">
-        <div class="dot-avatar d1">DM</div><div class="dot-avatar d2">SR</div><div class="dot-avatar d3">JW</div><div class="dot-avatar d4">+</div>
-      </div>
-      <p class="proof-count"><strong>47 tradespeople</strong> already on the waitlist</p>
-      <p class="proof-incentive">First 100 signups get their first 3 months free. Then £29.99/month.</p>
-      <p class="trust-line">UK-based. GDPR-aware handling. We never sell your data.</p>
-    </div>
-
-    <section class="features" aria-labelledby="features-label">
-      <h2 class="section-label" id="features-label">What you get</h2>
-      <div class="feature-list">
-        <div class="feature-item">
-          <div class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17 10A7 7 0 113 10a7 7 0 0114 0z" stroke="#FFB347" stroke-width="1.5" /><path d="M7.5 10l2 2 3-3" stroke="#FFB347" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
-          <div><div class="feature-title">One inbox for all your leads</div><div class="feature-desc">Every WhatsApp message from every customer in one screen. No more scrolling to find who asked what.</div></div>
+        <div class="stats">
+          <article class="stat"><strong>78%</strong><span>of customers book whoever replies first</span></article>
+          <article class="stat"><strong>43%</strong><span>of enquiries never get a reply at all</span></article>
+          <article class="stat"><strong>£150 to £350</strong><span>lost for every job-day that slips to a competitor</span></article>
+          <article class="stat"><strong>£200</strong><span>HMRC fine once MTD penalty points hit four</span></article>
         </div>
-        <div class="feature-item">
-          <div class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="13" rx="2" stroke="#FF6B2C" stroke-width="1.5" /><path d="M6 4V2M14 4V2M2 8h16" stroke="#FF6B2C" stroke-width="1.5" stroke-linecap="round" /></svg></div>
-          <div><div class="feature-title">See every job at a glance</div><div class="feature-desc">Lead to Quoted to Booked to Paid. Know exactly where every customer is - no spreadsheets, no sticky notes.</div></div>
+      </section>
+
+      <section id="pillars" aria-labelledby="pillars-title">
+        <div class="section-heading">
+          <h2 id="pillars-title">Three jobs, one chat thread</h2>
+          <p>Everything Trade Forge does serves one of these: no new app, no training, no admin evening.</p>
         </div>
-        <div class="feature-item">
-          <div class="feature-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#FFB347" stroke-width="1.5" /><path d="M10 6v4l2.5 2.5" stroke="#FFB347" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
-          <div><div class="feature-title">Works with your existing WhatsApp</div><div class="feature-desc">Keep using WhatsApp Business on your phone. Trade Forge connects alongside - nothing changes for you or your customers.</div></div>
+        <div class="pillars">
+          <article class="pillar">
+            <span class="num" aria-hidden="true">1</span>
+            <h3>Frictionless WhatsApp booking</h3>
+            <p>Enquiries become booked jobs inside the chat. Quote in a couple of clicks, customer accepts on WhatsApp, slot's confirmed. No back-and-forth.</p>
+          </article>
+          <article class="pillar">
+            <span class="num" aria-hidden="true">2</span>
+            <h3>Every job, booked to paid</h3>
+            <p>Booked → Scheduled → Completed → Due → Paid. One-tap status updates from site, invoices sent as a PDF the day the work's done.</p>
+          </article>
+          <article class="pillar">
+            <span class="num" aria-hidden="true">3</span>
+            <h3>Making Tax Digital exports</h3>
+            <p>Paid jobs and receipt photos become tax-ready digital records: a quarterly export instead of a January scramble.</p>
+          </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="how" aria-labelledby="how-label">
-      <h2 class="section-label" id="how-label">How it works</h2>
-      <div class="steps">
-        <div class="step"><div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Connect your WhatsApp</div><div class="step-desc">Takes about 2 minutes. You link the WhatsApp Business number you already use - no new number, no setup fee.</div></div></div>
-        <div class="step"><div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Messages start flowing in</div><div class="step-desc">Every new WhatsApp enquiry appears in your Trade Forge inbox. Reply from your phone as normal.</div></div></div>
-        <div class="step"><div class="step-left"><div class="step-num">3</div></div><div class="step-content"><div class="step-title">Move jobs through the pipeline</div><div class="step-desc">One tap to move a lead to Quoted, Booked, or Paid. Your whole business, organised in seconds.</div></div></div>
-      </div>
-    </section>
+      <section aria-labelledby="mtd-title">
+        <div class="section-heading">
+          <h2 id="mtd-title">Making Tax Digital isn't optional much longer</h2>
+          <p>HMRC's rollout hits sole traders in three waves, and the next one is the biggest.</p>
+        </div>
+        <div class="table-wrap">
+          <table class="mtd-table">
+            <thead>
+              <tr>
+                <th scope="col">Mandatory from</th>
+                <th scope="col">Qualifying income over</th>
+                <th scope="col">Who's affected</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>6 April 2026</td><td>£50,000</td><td>~780,000 sole traders &amp; landlords, already live</td></tr>
+              <tr><td>6 April 2027</td><td>£30,000</td><td>~970,000 more traders</td></tr>
+              <tr><td>6 April 2028</td><td>£20,000</td><td>The core of the sole-trader market</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mtd-note">Trade Forge keeps the digital records HMRC-recognised software needs, as a by-product of running your day-to-day jobs, not a separate task.</p>
+      </section>
 
-    <section class="faq" aria-labelledby="faq-label">
-      <h2 class="section-label" id="faq-label">Frequently asked questions</h2>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>Does this cost anything?</summary>
-          <p>Joining the waitlist is free. The first 100 signups get their first 3 months free, then it is £29.99/month.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Do I need a new phone number?</summary>
-          <p>No. Trade Forge works with your existing WhatsApp Business number, so you keep the number your customers already use.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is my customer data safe?</summary>
-          <p>Yes. We are UK-based, GDPR-aware, and we never sell your data.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What if I'm not on WhatsApp Business yet?</summary>
-          <p>That is fine. We will help you get set up during onboarding so you can start using Trade Forge properly from day one.</p>
-        </details>
-      </div>
-    </section>
+      <section aria-labelledby="pricing-title">
+        <div class="section-heading">
+          <h2 id="pricing-title">One plan. No contract.</h2>
+        </div>
+        <article class="price-card">
+          <p class="offer">First 100 sign-ups: 3 months free</p>
+          <p class="amount">£29.99<span>/month</span></p>
+          <ul class="price-list">
+            <li>Unlimited WhatsApp bookings &amp; quotes</li>
+            <li>Full job pipeline, booked to paid</li>
+            <li>Invoices &amp; payment reminders</li>
+            <li>MTD-ready quarterly exports</li>
+          </ul>
+          <a class="btn btn-primary btn-full" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+            Join the waitlist on WhatsApp
+          </a>
+        </article>
+      </section>
 
-    <section class="bottom-cta" aria-labelledby="bottom-cta-title">
-      <h2 id="bottom-cta-title">Ready to stop<br />losing <em>jobs?</em></h2>
-      <p>Join the waitlist. First 100 signups get their first 3 months free, then £29.99/month.</p>
-      <WhatsappCta href={whatsappUrl} buttonText="Join the Waitlist on WhatsApp" noteText="For sole traders and small trade businesses in the UK." />
-    </section>
-
-    <a href={whatsappUrl} class="mobile-sticky-cta" target="_blank" rel="noopener noreferrer" aria-label="Join the waitlist on WhatsApp">
-      <svg width="20" height="20" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-        <circle cx="11" cy="11" r="11" fill="#fff" fill-opacity="0.2" />
-        <path d="M11 5.1a5.9 5.9 0 00-5 9.1l-.7 2.6 2.7-.7A5.9 5.9 0 1011 5.1zm0 10.6c-.9 0-1.7-.2-2.5-.7l-.2-.1-1.6.4.4-1.6-.1-.2A4.6 4.6 0 1111 15.7zm2.5-3.4c-.1-.1-.8-.4-1-.4-.1-.1-.2-.1-.3.1l-.4.5c-.1.1-.2.1-.3.1-.5-.2-1.5-.9-2-1.8-.1-.1 0-.2.1-.3l.3-.4c.1-.1.1-.2.1-.3 0-.1-.3-.8-.4-1-.1-.2-.2-.2-.3-.2h-.2c-.1 0-.3 0-.4.2-.1.2-.4.5-.4 1.1 0 .6.4 1.2.5 1.3.1.1.9 1.5 2.3 2.1 1.3.5 1.3.3 1.6.3.3 0 .8-.3.9-.6.1-.3.1-.6 0-.6z" fill="#fff" />
-      </svg>
-      WhatsApp
-    </a>
-
-    <footer>
-      <div class="footer-logo">
-        <svg width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#1A1A1A" /><path d="M7 11h18M10 11l1.5 8h9L22 11" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /><path d="M13.5 19l-1 4h7l-1-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /><circle cx="23" cy="9" r="2.5" fill="#FF6B2C" /></svg>
-        <span>Trade Forge</span>
-      </div>
-      <span class="footer-legal">&copy; 2026 Trade Forge</span>
-    </footer>
-
-    <script is:inline src="/scripts/animations.js"></script>
+      <footer>
+        Built by tradespeople for UK sole traders.
+        <strong>Trade Forge</strong>
+      </footer>
+    </main>
   </body>
 </html>
